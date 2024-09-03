@@ -1,0 +1,115 @@
+
+参考文献/github
+
+一、特征提取：
+text feature: 句子embedding采用Chinese-BERT-wwm， 链接：https://github.com/ymcui/Chinese-BERT-wwm。task-level处理方法：取5个句子的平均。
+audio feature: 音频embedding采用wav2vec 2.0， 链接：https://arxiv.org/abs/2006.11477。task-level处理方法：取5个句子的平均。
+face feature: 图像embedding采用DeiT， 链接：https://github.com/facebookresearch/deit。 task-level处理方法：随机选取1个人脸。(我们也可以声称取了随机的10个脸的平均，，，)
+
+二、模态融合：
+1.总：
+CMU的综述论文：Multimodal Machine Learning: A survey and Taxonomy, arxiv:1705.09406v2 （第6节）
+
+2.各种方法：
+  (1) model-agnostic approaches
+        early fusion 详见CMU的综述论文
+        late fusion 详见CMU的综述论文
+  (2) model-based approaches
+        i. Multiple Kernel Learning:  只跑通了代码，我还不知道原理，寄
+	【new】Learning the kernel matrix via predictive low-rank approximations https://arxiv.org/abs/1601.04366 
+	Multiple Kernel Learning in the Primal for Multi-modal Alzheimer's Disease Classification https://ieeexplore.ieee.org/document/6627945【公式很多】
+                【主要是这一题篇，因为其他两篇看不懂，寄了】Deep Convolutional Neural Network Textual Features and Multiple Kernel Learning for Utterance-Level Multimodal Sentiment Analysis https://www.researchgate.net/publication/280944711_Deep_Convolutional_Neural_Network_Textual_Features_and_Multiple_Kernel_Learning_for_Utterance-Level_Multimodal_Sentiment_Analysis
+        	
+        ii. Graphical models:
+	(i) generative
+		TBD 我不想done了
+	(ii) discriminative
+		【用不了】The classification of multi-modal data with hidden conditional random field 【这篇文章的公式中有未指定的部分】
+        iii. Neural Networks
+	Tensor Fusion Network (TFN): Tensor Fusion Network for Multimodal Sentiment Analysis https://arxiv.org/abs/1707.07250
+简介
+Multimodal sentiment analysis (Morency et al, 2011; Zadeh et al, 2016b; Poria et al, 2015) is an increasingly popular area of affective computing research (Poria et al, 2017) that focuses on generalizing text-based sentiment analysis to opinionated videos, where three communicative modalities are present: language, visual, and acoustic.
+
+This generalization is vital to part of the NLP community dealing with opinion mining and sentiment analysis (Cambria et al, 2017) since there is a growing trend of sharing opinions in videos instead of text, specially in social media (Facebook, YouTube, etc.).
+Multimodal sentiment analysis (Morency et al, 2011; Zadeh et al, 2016b; Poria et al, 2015) is an increasingly popular area of affective computing research (Poria et al, 2017) that focuses on generalizing text-based sentiment analysis to opinionated videos, where three communicative modalities are present: language, visual, and acoustic.
+A person speaking loudly “This movie is sick” would still be ambiguous
+The complexity of inter-modality dynamics is shown in the second trimodal example where the utterance “This movie is fair” is still weakly positive, given the strong influence of the word “fair”
+重点内容
+Multimodal sentiment analysis (Morency et al, 2011; Zadeh et al, 2016b; Poria et al, 2015) is an increasingly popular area of affective computing research (Poria et al, 2017) that focuses on generalizing text-based sentiment analysis to opinionated videos, where three communicative modalities are present: language, visual, and acoustic.
+
+This generalization is vital to part of the NLP community dealing with opinion mining and sentiment analysis (Cambria et al, 2017) since there is a growing trend of sharing opinions in videos instead of text, specially in social media (Facebook, YouTube, etc.)
+We introduce a new model, termed Tensor Fusion Network (TFN), which learns both the intra-modality and inter-modality dynamics end-to-end
+Experiment 2: We study the importance of the TFN subtensors and the impact of each individual modality
+Our model outperforms state-ofthe-art approaches for both multimodal and unimodal sentiment analysis
+We introduced a new end-to-end fusion method for sentiment analysis which explicitly represents unimodal, bimodal, and trimodal interactions between behaviors
+方法
+All the models in this paper are tested using five-fold cross-validation proposed by CMUMOSI (Zadeh et al, 2016a).
+All of the experiments are performed independent of speaker identity, as no speaker is shared between train and test sets for generalizability of the model to unseen speakers in real-world.
+The best hyperparameters are chosen using grid search based on model performance on a validation set.
+The TFN model is trained using the Adam optimizer (Kingma and Ba, 2014) with the learning rate 5e4.
+The train, test and validation folds are exactly the same for all baselines
+结果
+Results in Table
+
+3 show that the model using only language modality outperforms state-of-theart approaches for the CMU-MOSI dataset.
+While previous models are well-studied and suitable models for sentiment analysis in written language, they underperform in modeling the sentiment in spoken language.
+The authors suspect that this underperformance is due to: RNTN and similar approaches rely heavily on dependency structure, which may not be present Visual Baseline.
+HL-RNN Adieu-Net SER-LSTM CMKL-A SAL-CNN-A SVM-MD-A TFNacoustic ∆SacOoTusAtic ↑ 1.7 ↑ 3.1
+结论
+The authors introduced a new end-to-end fusion method for sentiment analysis which explicitly represents unimodal, bimodal, and trimodal interactions between behaviors.
+The authors' experiments on the publiclyavailable CMU-MOSI dataset produced state-ofthe-art performance when compared against both multimodal approaches.
+The authors' approach brings state-of-the-art results for languageonly, visual-only and acoustic-only multimodal sentiment analysis on CMU-MOSI
+
+
+
+
+
+	Low-rank Multimodal Fusion (LMF): Efficient Low-rank Multimodal Fusion with Modality-Specific Factors https://arxiv.org/abs/1806.00064
+简介
+Multimodal research has shown great progress in a variety of tasks as an emerging research field of artificial intelligence
+Tasks such as speech recognition (Yuhas et al, 1989), emotion recognition, (De Silva et al, 1997), (Chen et al, 1998), (Wollmer et al, 2013), sentiment analysis, (Morency et al, 2011).
+Some of the recent attempts (Fukui et al, 2016), (Zadeh et al, 2017) at multimodal fusion investigate the use of tensors for multimodal representation and show significant improvement in performance
+They are often constrained by the exponential increase of cost in computation and memory introduced by using tensor representations.
+This heavily restricts the applicability of these models, especially when the authors have more than two views of modalities in the dataset
+重点内容
+Multimodal research has shown great progress in a variety of tasks as an emerging research field of artificial intelligence
+The comparison reported in the last two rows of Table 2 demonstrates that our model significantly outperforms Tensor Fusion Networks (TFN) across all datasets and metrics
+This competitive performance of LMF compared to TFN emphasizes the advantage of Low-rank Multimodal Fusion
+We introduce a Low-rank Multimodal Fusion method that performs multimodal fusion with modality-specific low-rank factors
+LMF demonstrates a significant decrease in computational complexity from exponential to linear time
+LMF effectively improves the training and testing efficiency compared to TFN which performs multimodal fusion with tensor representations
+方法
+The authors compare LMF with previous state-of-the-art baselines, and the authors use the Tensor Fusion Networks (TFN) (Zadeh et al, 2017) as a baseline for tensorbased approaches, which has the most similar structure with them except that it explicitly forms the large multi-dimensional tensor for fusion across different modalities.
+
+The authors design the experiments to better understand the characteristics of LMF.
+(2) Comparison with the State-of-the-art: The authors evaluate the performance of LMF and state-of-theart baselines on three different tasks and datasets.
+(4) Rank Settings: The authors explore performance of LMF with different rank settings
+The results of these experiments are presented in Section 5.
+CMU-MOSI The CMU-MOSI dataset is a collection of 93 opinion videos from YouTube movie reviews.
+Each segment is annotated for the presence of 9 emotions
+结果
+Results and Discussion
+
+the authors present and discuss the results from the experiments designed to study the research questions introduced in section 4.
+
+5.1 Impact of Low-rank Multimodal Fusion
+
+In this experiment, the authors compare the model directly with the TFN model since it has the most similar structure to the model, except that TFN explicitly forms the multimodal tensor fusion.
+The comparison reported in the last two rows of Table 2 demonstrates that the model significantly outperforms TFN across all datasets and metrics.
+This competitive performance of LMF compared to TFN emphasizes the advantage of Low-rank Multimodal Fusion.
+On the multimodal sentiment regression task, LMF outperforms the previous state-of-the-art model on MAE and Corr.
+Note the multiclass accuracy is calculated by mapping the range of continuous sentiment values into a set of intervals that are used as discrete classes
+结论
+The authors introduce a Low-rank Multimodal Fusion method that performs multimodal fusion with modality-specific low-rank factors.
+LMF scales linearly in the number of modalities.
+LMF achieves competitive results across different multimodal tasks.
+LMF demonstrates a significant decrease in computational complexity from exponential to linear time.
+LMF effectively improves the training and testing efficiency compared to TFN which performs multimodal fusion with tensor representations
+
+
+
+
+	EmbraceNet: EmbraceNet: A robust deep learning architecture for multimodal classification https://arxiv.org/abs/1904.09078
+
+
+ 

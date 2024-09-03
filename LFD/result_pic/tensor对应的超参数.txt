@@ -1,0 +1,11 @@
+tensor1:
+model = TFN(input_dims=(512, 768, 768), hidden_dims=(4, 16, 64), dropouts=(0.3, 0.3, 0.3, 0.3), post_fusion_dim=32)
+subnet没有linear3
+
+tensor2:
+model = TFN(input_dims=(512, 768, 768), hidden_dims=(16, 16, 64), dropouts=(0.3, 0.3, 0.3, 0.3), post_fusion_dim=32)
+subnet没有linear3
+
+tensor3
+model = TFN(input_dims=(512, 768, 768), hidden_dims=(4, 16, 64), dropouts=(0.3, 0.3, 0.3, 0.3), post_fusion_dim=32)
+subnet有linear3
