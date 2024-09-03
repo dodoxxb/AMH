@@ -1,0 +1,2 @@
+fft zscore处理后的特征，可以直接用于MAG模型
+att 加了attention后的特征
