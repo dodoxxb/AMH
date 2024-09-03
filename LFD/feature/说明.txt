@@ -1,0 +1,3 @@
+text_feature: 句子平均
+text_feature_20211219: 句子拼接
+平均acc：句子平均好于句子拼接
